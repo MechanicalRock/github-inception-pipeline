@@ -397,8 +397,8 @@ Outputs:
     Export:
       Name: !Join ['', [!Ref 'AWS::StackName', 'CodePipelineName']]
     Value: !Ref CodePipeline
-  CodePipelineKmsKeyArn:
-    Description: KMS Key ARN to encrypt GitHub OAuth token
-    Export:
-      Name: !Join ['', [!Ref 'AWS::StackName', 'CodepipelineKmsKey']]
-    Value: !Ref CodepipelineKmsKey
+  # CodePipelineKmsKeyArn:
+  #   Description: KMS Key ARN to encrypt GitHub OAuth token
+  #   Export:
+  #     Name: !Join ['', [!Ref 'AWS::StackName', 'CodepipelineKmsKey']]
+  #   Value: !Ref CodepipelineKmsKey
