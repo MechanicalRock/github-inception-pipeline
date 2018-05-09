@@ -5,6 +5,8 @@
         "CloudFormationDeployActionRoleName":"temyersGithubInceptionPipelineCfDeploy",
         "CodePipelineRoleName":"temyersGithubInceptionPipelineCpRole",
         "CodePipelineName":"temyersGithubInceptionPipeline",
-        "StageAdministerPipelineStackName":"temyersGithubInceptionPipeline"
+        "StageAdministerPipelineStackName":"temyersGithubInceptionPipeline",
+        "SSMGithubOAuthTokenParameter": "temyers-pipeline-oauth-token",
+        "SSMGithubOAuthTokenParameterVersion": "1"
     }
 }
