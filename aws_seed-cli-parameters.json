@@ -1,0 +1,26 @@
+[
+    {
+        "ParameterKey": "RepositoryName",
+        "ParameterValue": "github-inception-pipeline"
+    },
+    {
+        "ParameterKey": "CodePipelineS3BucketName",
+        "ParameterValue": "temyers-github-inception-pipeline"
+    },
+    {
+        "ParameterKey": "CloudFormationDeployActionRoleName",
+        "ParameterValue": "temyersGithubInceptionPipelineCfDeploy"
+    },
+    {
+        "ParameterKey": "CodePipelineRoleName",
+        "ParameterValue": "temyersGithubInceptionPipelineCpRole"
+    },
+    {
+        "ParameterKey": "CodePipelineName",
+        "ParameterValue": "temyersGithubInceptionPipeline"
+    },
+    {
+        "ParameterKey": "StageAdministerPipelineStackName",
+        "ParameterValue": "temyersGithubInceptionPipeline"
+    }
+]

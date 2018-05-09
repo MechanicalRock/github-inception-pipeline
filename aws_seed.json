@@ -1,0 +1,10 @@
+{
+    "Parameters": {
+        "RepositoryName": "github-inception-pipeline",
+        "CodePipelineS3BucketName":"temyers-github-inception-pipeline",
+        "CloudFormationDeployActionRoleName":"temyersGithubInceptionPipelineCfDeploy",
+        "CodePipelineRoleName":"temyersGithubInceptionPipelineCpRole",
+        "CodePipelineName":"temyersGithubInceptionPipeline",
+        "StageAdministerPipelineStackName":"temyersGithubInceptionPipeline"
+    }
+}
