@@ -61,6 +61,7 @@ Resources:
                   - 'codepipeline:*'
                   - 'iam:*'
                   - 's3:*'
+                  - 'kms:*' 
                 Effect: Allow
                 Resource: '*'
       RoleName: !Ref CloudFormationDeployActionRoleName 
