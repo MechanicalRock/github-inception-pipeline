@@ -335,16 +335,23 @@ Resources:
       Description: KMS Key for encrypting GitHub OAuth token
       Enabled: true
       EnableKeyRotation: true
-      # KeyPolicy: 
-      #   Version: 2012-10-17
-      #   Statement:
-      #     - Action:
-      #         - kms:Decrypt
-      #       Resource: '*'
-      #       Effect: Allow
-      #       Principal:
-      #         AWS: 
-      #           !GetAtt GetSsmValueLambda.Arn
+      KeyPolicy: 
+        Version: 2012-10-17
+        Statement:
+          - Sid: "Enable IAM User Permissions",
+            Effect: "Allow",
+            Principal: 
+              AWS: 
+                !Sub "arn:aws:iam::${AWS::AccountId}:root"
+            Action: "kms:*",
+            Resource: "*"
+          # - Action:
+          #     - kms:Decrypt
+          #   Resource: '*'
+          #   Effect: Allow
+          #   Principal:
+          #     AWS: 
+          #       !GetAtt GetSsmValueLambda.Arn
 Outputs:
   CodeCommitRepositoryArn:
     Description: CodeCommit Arn
