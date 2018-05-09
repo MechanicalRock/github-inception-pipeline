@@ -55,11 +55,27 @@ The source for the Inception Pipelines blog series!
 1. Re-instate the CodeCommit source
 1. Update the AdministerPipeline source to use GitHub 
     ```
-    InputArtifacts:
+    - Name: 'AdministerPipeline'
+          Actions:
+            - Name: 'AdministerPipeline'
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              Configuration:
+                ActionMode: REPLACE_ON_FAILURE 
+                Capabilities: CAPABILITY_NAMED_IAM
+                RoleArn: !GetAtt [CloudFormationDeployActionRole, Arn]
+                StackName: !Ref StageAdministerPipelineStackName
+                TemplateConfiguration: !Join ['', [!Ref RepositoryName, 'Source-GH', '::aws_seed.json']]
+                TemplatePath: !Join ['', [!Ref RepositoryName, 'Source-GH', '::aws_seed.yml']]
+              InputArtifacts:
                 - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
+              RunOrder: '1'
     ```
 1. push to code commit & github: `git push && git push origin master`
 1. pipeline fails for GH - credentials are now wrong - Update the OAuth token again (run `get-pipeline` step again to get updated pipeline)
 1. Remove the CodeCommit source
-1. Push to GitHub
+1. Push to GitHub (only)
 1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub (Failed :( - didn't update the source ref for administerPipeline)

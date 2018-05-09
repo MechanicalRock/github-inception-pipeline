@@ -160,8 +160,8 @@ Resources:
                 Capabilities: CAPABILITY_NAMED_IAM
                 RoleArn: !GetAtt [CloudFormationDeployActionRole, Arn]
                 StackName: !Ref StageAdministerPipelineStackName
-                TemplateConfiguration: !Join ['', [!Ref RepositoryName, 'Source', '::aws_seed.json']]
-                TemplatePath: !Join ['', [!Ref RepositoryName, 'Source', '::aws_seed.yml']]
+                TemplateConfiguration: !Join ['', [!Ref RepositoryName, 'Source-GH', '::aws_seed.json']]
+                TemplatePath: !Join ['', [!Ref RepositoryName, 'Source-GH', '::aws_seed.yml']]
               InputArtifacts:
                 - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
               RunOrder: '1'
