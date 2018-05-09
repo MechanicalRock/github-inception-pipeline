@@ -280,7 +280,7 @@ Resources:
             - kms:Decrypt
             Effect: Allow
             Resource:
-            - Ref: KmsKeyArn
+            - Ref: CodepipelineKmsKey
           Version: '2012-10-17'
         PolicyName: decrypt
       - PolicyDocument:
@@ -335,16 +335,16 @@ Resources:
       Description: KMS Key for encrypting GitHub OAuth token
       Enabled: true
       EnableKeyRotation: true
-      KeyPolicy: 
-        Version: 2012-10-17
-        Statement:
-          - Action:
-              - kms:Decrypt
-            Resource: '*'
-            Effect: Allow
-            Principal:
-              AWS: 
-                !GetAtt GetSsmValueLambda.Arn
+      # KeyPolicy: 
+      #   Version: 2012-10-17
+      #   Statement:
+      #     - Action:
+      #         - kms:Decrypt
+      #       Resource: '*'
+      #       Effect: Allow
+      #       Principal:
+      #         AWS: 
+      #           !GetAtt GetSsmValueLambda.Arn
 Outputs:
   CodeCommitRepositoryArn:
     Description: CodeCommit Arn
