@@ -78,4 +78,8 @@ The source for the Inception Pipelines blog series!
 1. pipeline fails for GH - credentials are now wrong - Update the OAuth token again (run `get-pipeline` step again to get updated pipeline)
 1. Remove the CodeCommit source
 1. Push to GitHub (only)
-1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub
+1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub (Breaking the AdministerPipeline, breaks everything - fix the source ref manually before restarting)
+1. Revert removal of CodeCommit source and push to both repositories
+1. Update the OAuth token (again)
+1. Remove the CodeCommit source (again)
+1. Push to GitHub (only)

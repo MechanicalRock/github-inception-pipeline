@@ -119,19 +119,19 @@ Resources:
       Stages:
         - Name: Source
           Actions:
-            - InputArtifacts: []
-              Name: Source
-              ActionTypeId:
-                Category: Source
-                Owner: AWS
-                Version: '1'
-                Provider: CodeCommit
-              OutputArtifacts:
-                - Name:  !Join ['', [!Ref RepositoryName, 'Source']]
-              Configuration:
-                BranchName: 'master'
-                RepositoryName: !GetAtt CodeCommitRepository.Name
-              RunOrder: 1
+            # - InputArtifacts: []
+            #   Name: Source
+            #   ActionTypeId:
+            #     Category: Source
+            #     Owner: AWS
+            #     Version: '1'
+            #     Provider: CodeCommit
+            #   OutputArtifacts:
+            #     - Name:  !Join ['', [!Ref RepositoryName, 'Source']]
+            #   Configuration:
+            #     BranchName: 'master'
+            #     RepositoryName: !GetAtt CodeCommitRepository.Name
+            #   RunOrder: 1
             - InputArtifacts: []
               Name: Source-GH
               ActionTypeId:
