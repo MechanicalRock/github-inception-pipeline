@@ -1,0 +1,14 @@
+{"webhook": 
+    {"name": "temyersGithubInceptionPipeline-webhook",
+     "targetPipeline": "temyersGithubInceptionPipeline",
+     "targetAction": "Source-GH",
+     "filters": [
+      {
+        "jsonPath": "$.ref", 
+        "matchEquals": "refs/heads/{Branch}"
+      }
+     ],
+     "authentication": "GITHUB_HMAC",
+     "authenticationConfiguration": {"SecretToken":"@@fill_me_in@@"}
+    }
+  }
