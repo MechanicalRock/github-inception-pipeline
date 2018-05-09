@@ -58,5 +58,8 @@ The source for the Inception Pipelines blog series!
     InputArtifacts:
                 - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
     ```
-1. push to code commit
-
+1. push to code commit & github: `git push && git push origin master`
+1. pipeline fails for GH - credentials are now wrong - Update the OAuth token again (run `get-pipeline` step again to get updated pipeline)
+1. Remove the CodeCommit source
+1. Push to GitHub
+1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub (Failed :( - didn't update the source ref for administerPipeline)
