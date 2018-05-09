@@ -62,6 +62,7 @@ Resources:
                   - 'iam:*'
                   - 's3:*'
                   - 'kms:*' 
+                  - 'lambda:*'
                 Effect: Allow
                 Resource: '*'
       RoleName: !Ref CloudFormationDeployActionRoleName 
@@ -105,7 +106,11 @@ Resources:
                   - cloudformation:UpdateStack
                   - cloudformation:CreateStack
 
-                  - 'iam:PassRole'
+                  - iam:PassRole
+
+                  - kms:CreateKey
+
+                  - logs:DescribeLogGroups
                 Resource: '*'
                 Effect: Allow
             Version: 2012-10-17
