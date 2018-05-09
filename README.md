@@ -83,3 +83,13 @@ The source for the Inception Pipelines blog series!
 1. Update the OAuth token (again)
 1. Remove the CodeCommit source (again)
 1. Push to GitHub (only)
+1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub :metal:
+1. But each time the pipeline is updated, GitHub integration breaks
+
+## Securing OAuth token:
+1. Add config for the parameter store
+    - Add KMS Key to encrypt the GitHub OAuth token
+    - Add custom lambda function to decrypt the value
+1. Push to GitHub
+- aws ssm put-parameter --name "temyers-pipeline-oauth-token" --type "SecureString" --value "my-secret-value" --key-id
+
