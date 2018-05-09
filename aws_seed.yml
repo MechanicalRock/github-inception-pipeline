@@ -154,8 +154,8 @@ Resources:
                 Branch: 'master'
                 Owner: MechanicalRock
                 Repo: github-inception-pipeline
-                OAuthToken: 'invalid'
-                # OAuthToken: !GetAtt GithubOAuthToken.Value
+                # OAuthToken: 'invalid'
+                OAuthToken: !GetAtt GithubOAuthToken.Value
               RunOrder: 1
         - Name: 'AdministerPipeline'
           Actions:
@@ -320,19 +320,26 @@ Resources:
               - get-ssm-value
       RetentionInDays: 14
     Type: AWS::Logs::LogGroup
-  # GithubOAuthToken:
-  #   Properties:
-  #     KeyId:
-  #       !GetAtt CodepipelineKmsKey.Arn
-  #     Name:
-  #       Ref: SSMGithubOAuthTokenParameter
-  #     ServiceToken:
-  #       Fn::GetAtt:
-  #       - GetSsmValueLambda
-  #       - Arn
-  #     Version:
-  #       Ref: SSMGithubOAuthTokenParameterVersion
-  #   Type: Custom::GetSsmValue
+  GithubOAuthToken:
+    Properties:
+      KeyId:
+        !GetAtt CodepipelineKmsKey.Arn
+      Name:
+        Ref: SSMGithubOAuthTokenParameter
+      ServiceToken:
+        Fn::GetAtt:
+        - GetSsmValueLambda
+        - Arn
+      Version:
+        Ref: SSMGithubOAuthTokenParameterVersion
+    Type: Custom::GetSsmValue
+  CodepipelineKmsKeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: 
+        !Sub 'alias/${CodePipelineName}Key'
+      TargetKeyId:
+        Ref: CodepipelineKmsKey
   CodepipelineKmsKey: 
     Type: "AWS::KMS::Key"
     Properties: 
@@ -401,4 +408,4 @@ Outputs:
     Description: KMS Key ARN to encrypt GitHub OAuth token
     Export:
       Name: !Join ['', [!Ref 'AWS::StackName', 'CodepipelineKmsKey']]
-    Value: !Ref CodepipelineKmsKey
+    Value: !GetAtt CodepipelineKmsKey.Arn
