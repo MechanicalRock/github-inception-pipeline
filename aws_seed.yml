@@ -175,6 +175,7 @@ Resources:
               InputArtifacts:
                 - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
               RunOrder: '1'
+  # Courtesy of https://github.com/nordcloud/cfn-encrypt
   GetSsmValueLambda:
     DependsOn:
     - LogGroupGetSsmValue

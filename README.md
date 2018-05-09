@@ -91,7 +91,7 @@ The source for the Inception Pipelines blog series!
 1. Push to GitHub to update the permissions
 1. Add config for the parameter store
     - Add KMS Key to encrypt the GitHub OAuth token
-    - Add custom lambda function to decrypt the value
+    - Add [custom lambda function](https://github.com/nordcloud/cfn-encrypt) to decrypt the value
 1. push to github
 1. Add OAuth parameter
     - aws ssm put-parameter --name "temyers-pipeline-oauth-token" --type "SecureString" --value "my-secret-value" --key-id
