@@ -87,9 +87,13 @@ The source for the Inception Pipelines blog series!
 1. But each time the pipeline is updated, GitHub integration breaks
 
 ## Securing OAuth token:
+1. Add permissions to the CF deploy role to allow lambda, cloudwatch logs and kms - give permissions to the pipeline
+1. Push to GitHub to update the permissions
 1. Add config for the parameter store
     - Add KMS Key to encrypt the GitHub OAuth token
     - Add custom lambda function to decrypt the value
+1. push to github
+1. Add OAuth parameter
+    - aws ssm put-parameter --name "temyers-pipeline-oauth-token" --type "SecureString" --value "my-secret-value" --key-id
 1. Push to GitHub
-- aws ssm put-parameter --name "temyers-pipeline-oauth-token" --type "SecureString" --value "my-secret-value" --key-id
-
+1. Add the ssm-parameter reference and update the pipeline to reference it
