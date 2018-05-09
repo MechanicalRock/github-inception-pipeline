@@ -132,6 +132,21 @@ Resources:
                 BranchName: 'master'
                 RepositoryName: !GetAtt CodeCommitRepository.Name
               RunOrder: 1
+            - InputArtifacts: []
+              Name: Source-GH
+              ActionTypeId:
+                Category: Source
+                Owner: ThirdParty
+                Version: '1'
+                Provider: GitHub
+              OutputArtifacts:
+                - Name:  !Join ['', [!Ref RepositoryName, 'Source-GH']]
+              Configuration:
+                Branch: 'master'
+                Owner: MechanicalRock
+                Repo: github-inception-pipeline
+                OAuthToken: 'invalid'
+              RunOrder: 1
         - Name: 'AdministerPipeline'
           Actions:
             - Name: 'AdministerPipeline'
