@@ -120,6 +120,19 @@ Resources:
         - Name: Source
           Actions:
             - InputArtifacts: []
+              Name: Source
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Version: '1'
+                Provider: CodeCommit
+              OutputArtifacts:
+                - Name:  !Join ['', [!Ref RepositoryName, 'Source']]
+              Configuration:
+                BranchName: 'master'
+                RepositoryName: !GetAtt CodeCommitRepository.Name
+              RunOrder: 1
+            - InputArtifacts: []
               Name: Source-GH
               ActionTypeId:
                 Category: Source
@@ -150,7 +163,7 @@ Resources:
                 TemplateConfiguration: !Join ['', [!Ref RepositoryName, 'Source', '::aws_seed.json']]
                 TemplatePath: !Join ['', [!Ref RepositoryName, 'Source', '::aws_seed.yml']]
               InputArtifacts:
-                - Name: !Join ['', [!Ref RepositoryName, 'Source']]
+                - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
               RunOrder: '1'
 
 Outputs:

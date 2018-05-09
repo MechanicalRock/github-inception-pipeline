@@ -51,4 +51,12 @@ The source for the Inception Pipelines blog series!
 --region region
 1. Delete the CodeCommit repository source
 1. Push to GitHub
-1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub
+1. If everything worked, the pipeline should be updated to delete the CodeCommit source - you're now running against GitHub (Failed :( - didn't update the source ref for administerPipeline)
+1. Re-instate the CodeCommit source
+1. Update the AdministerPipeline source to use GitHub 
+    ```
+    InputArtifacts:
+                - Name: !Join ['', [!Ref RepositoryName, 'Source-GH']]
+    ```
+1. push to code commit
+
