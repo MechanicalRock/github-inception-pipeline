@@ -329,7 +329,8 @@ Resources:
       Version:
         Ref: SSMGithubOAuthTokenParameterVersion
     Type: Custom::GetSsmValue
-  CodepipelineKmsKey: Type: "AWS::KMS::Key"
+  CodepipelineKmsKey: 
+    Type: "AWS::KMS::Key"
     Properties: 
       Description: KMS Key for encrypting GitHub OAuth token
       Enabled: true
